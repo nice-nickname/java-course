@@ -22,13 +22,17 @@ public class Fractional extends Pair {
     }
 
     @Override
-    public void multiply(Pair fractional) {
+    public void multiply(Pair fractional) throws ArithmeticException {
+        if (fractional.b == 0) {
+            throw new ArithmeticException("Division by zero is not allowed.");
+        }
+
         this.a *= fractional.a;
         this.b *= fractional.b;
     }
 
     @Override
-    public void divide(Pair other) {
+    public void divide(Pair other) throws ArithmeticException {
         if (other.a == 0) {
             throw new ArithmeticException("Division by zero is not allowed.");
         }

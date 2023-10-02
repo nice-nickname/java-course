@@ -10,14 +10,14 @@ public class Triangle implements Comparable<Triangle> {
     }
 
     public double findPerimeter() {
-        var m = findMagnitudes(this.points);
+        var m = findSidesLength(this.points);
         double a = m[0], b = m[1], c = m[2];
 
         return a + b + c;
     }
 
     public double findArea() {
-        var m = findMagnitudes(this.points);
+        var m = findSidesLength(this.points);
         double a = m[0], b = m[1], c = m[2];
 
         var p = (a + b + c) / 2;
@@ -67,7 +67,10 @@ public class Triangle implements Comparable<Triangle> {
         return Double.compare(areaDiff, 0);
     }
 
-    private static double[] findMagnitudes(Point[] points) {
+    /**
+     * Вычисление длин сторон треугольника
+     */
+    private static double[] findSidesLength(Point[] points) {
         var a = Point.magniture(points[0], points[1]);
         var b = Point.magniture(points[1], points[2]);
         var c = Point.magniture(points[2], points[0]);
@@ -76,7 +79,7 @@ public class Triangle implements Comparable<Triangle> {
     }
 
     private static void checkTriangleExisting(Point[] points) throws InvalidParameterException {
-        var m = findMagnitudes(points);
+        var m = findSidesLength(points);
         double a = m[0], b = m[1], c = m[2];
 
         if ((a + b <= c) || (b + c <= a) || (c + a <= b)) {
