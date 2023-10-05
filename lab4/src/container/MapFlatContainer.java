@@ -7,35 +7,32 @@ import java.util.TreeMap;
 import java.util.stream.Collectors;
 import data.Flat;
 
-public class MapContainer implements FlatsContainer {
+public class MapFlatContainer implements FlatsContainer {
 
-    private final TreeMap<Double, ArrayList<Flat>> flats;
+    private final TreeMap<Double, List<Flat>> flats;
 
-    public MapContainer(List<Flat> flats) {
-        this.flats = new TreeMap<Double, ArrayList<Flat>>();
+    public MapFlatContainer(List<Flat> flats) {
+        this.flats = new TreeMap<Double, List<Flat>>();
 
         for (Flat flat : flats) {
-            Add(flat);
+            add(flat);
         }
     }
 
     @Override
-    public List<Flat> findByArea(double area) {
-        var lowerArea = area * 0.9;
-        var upperArea = area * 1.1;
+    public List<Flat> findByArea(double lowerArea, double upperArea) {
+        var flatsByArea = this.flats.subMap(lowerArea, true, upperArea, true);
 
-        var flatsStream = this.flats.entrySet().stream();
-
-        return flatsStream
-                .filter(s -> lowerArea >= s.getKey() && upperArea <= s.getKey())
+        return flatsByArea.entrySet().stream()
                 .flatMap(s -> s.getValue().stream())
                 .collect(Collectors.toList());
     }
 
-    private void Add(Flat flat) {
+    @Override
+    public void add(Flat flat) {
         var area = flat.getArea();
 
-        ArrayList<Flat> currentFlats;
+        List<Flat> currentFlats;
         if (this.flats.containsKey(flat.getArea())) {
             currentFlats = flats.get(area);
         } else {

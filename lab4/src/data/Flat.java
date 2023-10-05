@@ -20,6 +20,6 @@ public class Flat {
 
     @Override
     public String toString() {
-        return String.format("(%s, %d floor and %d rooms, area: %.2l)", this.district, this.roomsCount, this.floor, this.area);
+        return String.format("(%s, %d floor and %d rooms, area: %.2f)", this.district, this.roomsCount, this.floor, this.area);
     }
 }

@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class FileReader {
 
-    public List<Flat> readFlats(String fileName) {
+    public static List<Flat> readFlats(String fileName) {
         List<Flat> flats = new ArrayList<>();
 
         try (Scanner scanner = new Scanner(new File(fileName))) {
@@ -16,12 +16,12 @@ public class FileReader {
                 int roomsCount = scanner.nextInt();
                 int floor = scanner.nextInt();
                 double area = scanner.nextDouble();
-                String district = scanner.nextLine();
+                String district = scanner.next();
 
                 Flat flat = new Flat(district, roomsCount, floor, area);
                 flats.add(flat);
             }
-        } catch (FileNotFoundException e) {
+        } catch (Exception e) {
             System.err.println(e.getMessage());
         }
 

@@ -6,5 +6,14 @@ import data.Flat;
 
 public interface FlatsContainer {
 
-    List<Flat> findByArea(double area);
+    /**
+     * Поиск по площади по заданным границам
+     */
+    List<Flat> findByArea(double lowerArea, double upperArea);
+
+    /**
+     * Добавление новой Flat
+     * @param flat
+     */
+    void add(Flat flat);
 }
