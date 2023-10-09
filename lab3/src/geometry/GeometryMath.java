@@ -34,7 +34,28 @@ public class GeometryMath {
     }
     
     public static boolean isIncludes(Point p, Shape shape) {
-        
+        var points = shape.getPoints();
+
+        for (var i = 0; i < points.length; i++) {
+            if (p.equals(points[i])) {
+                return true;
+            }
+        }
+
+        var checkLinesCount = points.length + 1;
+        var checkLines = new Line[checkLinesCount];
+
+        for (var i = 0; i < checkLinesCount - 1; i++) {
+            checkLines[i] = new Line(p, points[i]);
+        }
+        checkLines[checkLinesCount - 1] = checkLines[0];
+
+        double angle = 0;
+        for (var i = 0; i < checkLinesCount - 1; i++) {
+            angle += Line.angle(checkLines[i], checkLines[i + 1]);
+        }
+
+        return angle == 2 * PI;
     }
 
     public static boolean isIncludes(Shape lhs, Shape rhs) {

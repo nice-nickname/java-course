@@ -1,5 +1,8 @@
 package shapes;
 
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import geometry.GeometryMath;
 import geometry.Line;
 import geometry.Point;
@@ -57,4 +60,24 @@ public abstract class Shape {
 
     public abstract double getArea();
     public abstract boolean IsExists();
+
+    @Override
+    public String toString() {
+        return Stream.of(points)
+                    .map(Object::toString)
+                    .collect(Collectors.joining("\n"));
+    }
+
+    public static Shape createShape(char code, Point[] points) {
+        switch (code) {
+            case 'R':
+                return new Rectagnel(points);
+        
+            case 'T':
+                return new Trapezoid(points);
+
+            default:
+                return null;
+        }
+    }
 }
