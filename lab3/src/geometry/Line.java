@@ -18,8 +18,12 @@ public class Line {
         return this.start;
     }
 
-    public double magintude() {
-        return Point.magniture(this.end, this.start);
+    public double length() {
+        return asVector().magnitude();
+    }
+
+    public Point asVector() {
+        return new Point(end.getX() - start.getX(), start.getY() - end.getY());
     }
 
     public boolean isIntersecting(Line rhs) {
@@ -46,11 +50,25 @@ public class Line {
         var v1 = new Point(lhs.getEnd().getX() - lhs.getStart().getX(), lhs.getEnd().getY() - lhs.getStart().getY());
         var v2 = new Point(rhs.getEnd().getX() - rhs.getStart().getX(), rhs.getEnd().getY() - rhs.getStart().getY());
 
-        double scalar = v1.getX() * v2.getX() + v1.getY() * v2.getY();
+        double scalar = Point.dot(v1, v2);
 
-        double m1 = lhs.magintude();
-        double m2 = rhs.magintude();
+        double m1 = lhs.length();
+        double m2 = rhs.length();
 
         return Math.acos(scalar / (m1 * m2));
+    }
+
+    public static boolean isParallel(Line lhs, Line rhs) {
+        var magintude = lhs.length() * rhs.length();
+        var scalar = Point.dot(lhs.asVector(), rhs.asVector());
+
+        return magintude == Math.abs(scalar);
+    } 
+
+    public static Line inverse(Line l) {
+        return new Line(
+            Point.copy(l.end), 
+            Point.copy(l.start)
+        );
     }
 }

@@ -15,8 +15,8 @@ public class GeometryMath {
     }
 
     public static boolean isIntersect(Shape lhs, Shape rhs) {
-        var lhsEdges = lhs.getEdges();
-        var rhsEdges = rhs.getEdges();
+        var lhsEdges = lhs.getEdgeLines();
+        var rhsEdges = rhs.getEdgeLines();
 
         for (var i = 0; i < lhsEdges.length; i++) {
             var l1 = lhsEdges[i];

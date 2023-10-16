@@ -2,7 +2,6 @@ package shapes;
 
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
 import geometry.GeometryMath;
 import geometry.Line;
 import geometry.Point;
@@ -31,7 +30,7 @@ public abstract class Shape {
         return this.points;
     }
 
-    public Line[] getEdges() {
+    public Line[] getEdgeLines() {
         var lines = new Line[this.points.length];
         var linesCount = this.points.length;
 
@@ -71,7 +70,7 @@ public abstract class Shape {
     public static Shape createShape(char code, Point[] points) {
         switch (code) {
             case 'R':
-                return new Rectagnel(points);
+                return new Rectangle(points);
         
             case 'T':
                 return new Trapezoid(points);

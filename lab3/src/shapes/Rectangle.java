@@ -4,22 +4,22 @@ import geometry.GeometryMath;
 import geometry.Line;
 import geometry.Point;
 
-public class Rectagnel extends Shape {
+public class Rectangle extends Shape {
 
-    protected Rectagnel(Point[] points) {
+    protected Rectangle(Point[] points) {
         super(points);
     }
 
     @Override
     public double getArea() {
-        var edges = this.getEdges();
+        var edges = this.getEdgeLines();
 
-        return edges[0].magintude() * edges[1].magintude();
+        return edges[0].length() * edges[1].length();
     }
 
     @Override
     public boolean IsExists() {
-        var edges = this.getEdges();
+        var edges = this.getEdgeLines();
 
         var a = Line.angle(edges[0], edges[1]);
         var b = Line.angle(edges[1], edges[2]);

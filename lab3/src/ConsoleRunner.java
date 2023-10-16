@@ -16,8 +16,14 @@ public class ConsoleRunner {
     }
 
     public void run() {
-        this.first = readShape();
-        this.second = readShape();
+        try {
+            this.first = readShape();
+            this.second = readShape();
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.exit(-1);
+        }
 
         printMenu();
 
@@ -151,7 +157,7 @@ public class ConsoleRunner {
         return second;
     }
 
-    private Shape readShape() {
+    private Shape readShape() throws InvalidParameterException {
         var points = new Point[4];
         
         System.out.println("Enter 4 points for shape:");
@@ -168,6 +174,10 @@ public class ConsoleRunner {
 
         if (shape == null) {
             throw new InvalidParameterException("Unknow figure type '" + type + "'");
+        }
+
+        if (!shape.IsExists()) {
+           throw new InvalidParameterException("Invalid points for shape");
         }
 
         return shape;

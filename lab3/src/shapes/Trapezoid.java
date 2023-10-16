@@ -1,5 +1,6 @@
 package shapes;
 
+import geometry.Line;
 import geometry.Point;
 
 public class Trapezoid extends Shape {
@@ -10,25 +11,32 @@ public class Trapezoid extends Shape {
 
     @Override
     public double getArea() {
-        var edges = this.getEdges();
+        var edges = this.getEdgeLines();
 
-        var a = edges[1].magintude();
-        var b = edges[3].magintude();
-        var c = edges[0].magintude();
-        var d = edges[2].magintude();
+        var a = edges[0].length();
+        var b = edges[1].length();
+        var c = edges[2].length();
+        var d = edges[3].length();
 
-        var asideRoot = (a + b) / 2;
-        var secondArg = (((b - a) * (b - a) + c * c - d * d ) 
-                            /
-                         (2 * (b - a)));
+        var T = a - c;
+        var D = d * d - b * b;
+        var R = (T * T - D) / (2 * T);
+        var h = Math.sqrt(b * b - R * R);
 
-        var innerRoot = c * c - secondArg * secondArg;
+        var area = h * (a + c) / 2;
 
-        return asideRoot * Math.sqrt(innerRoot);
+        return area;
     }
 
     @Override
     public boolean IsExists() {
-        return true;
+        var edges = this.getEdgeLines();
+        
+        var bottom = edges[0];
+        var top = edges[2];
+        var left = edges[1];
+        var right = edges[3];
+
+        return Line.isParallel(bottom, top) && !Line.isParallel(left, right);
     }
 }

@@ -31,6 +31,12 @@ public class Point {
         this.y += offsetY;
     }
 
+    public double magnitude() {
+        return Math.sqrt(
+            x * x + y * y
+        );
+    }
+
     @Override
     public String toString() {
         return String.format("[%.2f, %.2f]", this.x, this.y);
@@ -46,10 +52,11 @@ public class Point {
         return false;
     }
 
-    public static double magniture(Point from, Point to) {
-        var subX = to.x - from.x;
-        var subY = to.y - from.y;
+    public static double dot(Point v1, Point v2) {
+        return v1.x * v2.x + v1.y * v2.y;
+    }
 
-        return Math.sqrt(subX * subX + subY * subY);
+    public static Point copy(Point other) {
+        return new Point(other.x, other.y);
     }
 }
