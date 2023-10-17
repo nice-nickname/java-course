@@ -29,7 +29,7 @@ public class Trapezoid extends Shape {
     }
 
     @Override
-    public boolean IsExists() {
+    public boolean isExists() {
         var edges = this.getEdgeLines();
         
         var bottom = edges[0];

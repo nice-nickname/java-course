@@ -176,7 +176,7 @@ public class ConsoleRunner {
             throw new InvalidParameterException("Unknow figure type '" + type + "'");
         }
 
-        if (!shape.IsExists()) {
+        if (!shape.isExists()) {
            throw new InvalidParameterException("Invalid points for shape");
         }
 

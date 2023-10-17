@@ -58,7 +58,7 @@ public abstract class Shape {
     }
 
     public abstract double getArea();
-    public abstract boolean IsExists();
+    public abstract boolean isExists();
 
     @Override
     public String toString() {
