@@ -14,22 +14,13 @@ public abstract class Shape {
         this.points = points;
     }
 
-    public Point getCenter() {
-        double x = 0;
-        double y = 0;
-
-        for (var i = 0; i < this.points.length; i++) {
-            x += this.points[i].getX();
-            y += this.points[i].getY();
-        }
-
-        return new Point(x, y);
-    }
-
     public Point[] getPoints() {
         return this.points;
     }
 
+    /**
+     * Метод получения сторон фигуры
+     */
     public Line[] getEdgeLines() {
         var lines = new Line[this.points.length];
         var linesCount = this.points.length;
@@ -42,22 +33,57 @@ public abstract class Shape {
         return lines;
     }
 
+    /**
+     * Получение центра тяжести фигуры
+     * @return центр тяжести
+     */
+    public Point getCenter() {
+        double x = 0;
+        double y = 0;
+
+        for (var i = 0; i < this.points.length; i++) {
+            x += this.points[i].getX();
+            y += this.points[i].getY();
+        }
+
+        return new Point(x, y);
+    }
+
+    /**
+     * Поворот фигуры вокруг с помощью матрицы поворота
+     * @param degrees величина в градусах
+     */
     public void rotate(int degrees) {
         double radians = GeometryMath.degreesToRadian(degrees);
         
         for (Point point : points) {
-            point.setX(point.getX() * Math.cos(radians) - point.getY() * Math.sin(radians));
-            point.setX(point.getX() * Math.sin(radians) + point.getY() * Math.cos(radians));
+            var x = point.getX();
+            var y = point.getY();
+
+            point.setX(x * Math.cos(radians) - y * Math.sin(radians));
+            point.setY(x * Math.sin(radians) + y * Math.cos(radians));
         }
     }
 
+    /**
+     * Перемещение фигуры
+     * @param offsetX перемещение по X
+     * @param offsetY перемещение по Y
+     */
     public void move(double offsetX, double offsetY) {
         for (Point point : points) {
             point.move(offsetX, offsetY);
         }
     }
 
+    /**
+     * Расчет площади
+     */
     public abstract double getArea();
+
+    /**
+     * Определения существования фигуры
+     */
     public abstract boolean isExists();
 
     @Override

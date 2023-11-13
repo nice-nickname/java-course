@@ -6,6 +6,11 @@ public class GeometryMath {
 
     public static final double PI = Math.PI;
     
+    /**
+     * Перевод градусов в радианы
+     * @param degrees угол в градусах
+     * @return угол в радианах
+     */
     public static double degreesToRadian(int degrees) {
         return (degrees % 360) * PI / 180;
     }
@@ -14,6 +19,9 @@ public class GeometryMath {
         return Double.compare(lhs.getArea(), rhs.getArea());
     }
 
+    /**
+     * Проверка пересечения Фигур
+     */
     public static boolean isIntersect(Shape lhs, Shape rhs) {
         var lhsEdges = lhs.getEdgeLines();
         var rhsEdges = rhs.getEdgeLines();
@@ -33,6 +41,9 @@ public class GeometryMath {
         return false;
     }
     
+    /**
+     * Проверка включения ТОЧКИ в фигуру
+     */
     public static boolean isIncludes(Point p, Shape shape) {
         var points = shape.getPoints();
 
@@ -58,6 +69,9 @@ public class GeometryMath {
         return angle == 2 * PI;
     }
 
+    /**
+     * Проверка включения одной фигуры в другой
+     */
     public static boolean isIncludes(Shape lhs, Shape rhs) {
         var points = rhs.getPoints();
 
