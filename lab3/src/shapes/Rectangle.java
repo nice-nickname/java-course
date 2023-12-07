@@ -25,6 +25,10 @@ public class Rectangle extends Shape {
         var top = edges[2];
         var left = edges[3];
         
+<<<<<<< HEAD
         return Line.isParallel(top, bottom) && Line.isParallel(left, right);
+=======
+        return Line.isParallel(top, bottom) && Line.isParallel(right, left);
+>>>>>>> b67dc2cd44ad23232b79af10259c81a92da0a34c
     }
 }

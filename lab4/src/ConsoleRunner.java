@@ -17,7 +17,7 @@ public class ConsoleRunner {
     }
 
     public void run() {
-        var flats = FileReader.readFlats("/home/ahaha/repos/java-labs/lab4/dataset.txt");
+        var flats = FileReader.readFlats("/home/ahaha/java-course/lab4/dataset.txt");
 
         System.out.println("Choose container [M]ap / [L]ist");
         char c = sc.nextLine().charAt(0);

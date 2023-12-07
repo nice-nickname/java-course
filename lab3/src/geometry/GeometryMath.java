@@ -7,8 +7,13 @@ public class GeometryMath {
     public static final double PI = Math.PI;
     
     /**
+<<<<<<< HEAD
      * Перевод величины угла
      * @param degrees - угол в градусах
+=======
+     * Перевод градусов в радианы
+     * @param degrees угол в градусах
+>>>>>>> b67dc2cd44ad23232b79af10259c81a92da0a34c
      * @return угол в радианах
      */
     public static double degreesToRadian(int degrees) {
@@ -22,9 +27,14 @@ public class GeometryMath {
         return Double.compare(lhs.getArea(), rhs.getArea());
     }
 
+<<<<<<< HEAD
 
     /**
      * Определение пересечения фигур
+=======
+    /**
+     * Проверка пересечения Фигур
+>>>>>>> b67dc2cd44ad23232b79af10259c81a92da0a34c
      */
     public static boolean isIntersect(Shape lhs, Shape rhs) {
         var lhsEdges = lhs.getEdgeLines();
@@ -46,9 +56,13 @@ public class GeometryMath {
     }
     
     /**
+<<<<<<< HEAD
      * Определение включения точки в фигуру
      * Алгоритм строит линии с началом в точке P, и концами на точках (вершинах) Shape
      * Если угол между всеми этими линиями равен 360 -> точка включается в фигуру
+=======
+     * Проверка включения ТОЧКИ в фигуру
+>>>>>>> b67dc2cd44ad23232b79af10259c81a92da0a34c
      */
     public static boolean isIncludes(Point p, Shape shape) {
         var points = shape.getPoints();
@@ -76,7 +90,11 @@ public class GeometryMath {
     }
 
     /**
+<<<<<<< HEAD
      * Определение включения фигуры в другой
+=======
+     * Проверка включения одной фигуры в другой
+>>>>>>> b67dc2cd44ad23232b79af10259c81a92da0a34c
      */
     public static boolean isIncludes(Shape lhs, Shape rhs) {
         var points = rhs.getPoints();
