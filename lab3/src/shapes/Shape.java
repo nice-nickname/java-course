@@ -23,13 +23,17 @@ public abstract class Shape {
             y += this.points[i].getY();
         }
 
-        return new Point(x, y);
+        return new Point(x / 3, y / 3);
     }
 
     public Point[] getPoints() {
         return this.points;
     }
 
+    /**
+     * Метод получения сторон фигуры
+     * @return массив линий - сторон
+     */
     public Line[] getEdgeLines() {
         var lines = new Line[this.points.length];
         var linesCount = this.points.length;
@@ -42,6 +46,10 @@ public abstract class Shape {
         return lines;
     }
 
+    /**
+     * Поворот
+     * @param degrees - угол в градусах
+     */
     public void rotate(int degrees) {
         double radians = GeometryMath.degreesToRadian(degrees);
         
@@ -66,6 +74,7 @@ public abstract class Shape {
                     .map(Object::toString)
                     .collect(Collectors.joining("\n"));
     }
+
 
     public static Shape createShape(char code, Point[] points) {
         switch (code) {

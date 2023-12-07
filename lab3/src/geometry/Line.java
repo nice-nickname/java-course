@@ -23,7 +23,7 @@ public class Line {
     }
 
     public Point asVector() {
-        return new Point(end.getX() - start.getX(), start.getY() - end.getY());
+        return new Point(end.getX() - start.getX(), end.getY() - start.getY());
     }
 
     public boolean isIntersecting(Line rhs) {

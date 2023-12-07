@@ -1,6 +1,5 @@
 package shapes;
 
-import geometry.GeometryMath;
 import geometry.Line;
 import geometry.Point;
 
@@ -21,11 +20,11 @@ public class Rectangle extends Shape {
     public boolean isExists() {
         var edges = this.getEdgeLines();
 
-        var a = Line.angle(edges[0], edges[1]);
-        var b = Line.angle(edges[1], edges[2]);
-        var c = Line.angle(edges[2], edges[3]);
-        var d = Line.angle(edges[3], edges[0]);
+        var bottom = edges[0];
+        var right = edges[1];
+        var top = edges[2];
+        var left = edges[3];
         
-        return a + b + c + d == GeometryMath.PI * 2;
+        return Line.isParallel(top, bottom) && Line.isParallel(left, right);
     }
 }
