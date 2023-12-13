@@ -14,7 +14,6 @@ public abstract class Shape {
         this.points = points;
     }
 
-<<<<<<< HEAD
     public Point getCenter() {
         double x = 0;
         double y = 0;
@@ -24,21 +23,19 @@ public abstract class Shape {
             y += this.points[i].getY();
         }
 
-        return new Point(x / 3, y / 3);
+        return new Point(
+            x / this.points.length,
+            y / this.points.length
+        );
     }
 
-=======
->>>>>>> b67dc2cd44ad23232b79af10259c81a92da0a34c
     public Point[] getPoints() {
         return this.points;
     }
 
     /**
      * Метод получения сторон фигуры
-<<<<<<< HEAD
      * @return массив линий - сторон
-=======
->>>>>>> b67dc2cd44ad23232b79af10259c81a92da0a34c
      */
     public Line[] getEdgeLines() {
         var lines = new Line[this.points.length];
@@ -53,10 +50,6 @@ public abstract class Shape {
     }
 
     /**
-<<<<<<< HEAD
-     * Поворот
-     * @param degrees - угол в градусах
-=======
      * Получение центра тяжести фигуры
      * @return центр тяжести
      */
@@ -75,7 +68,6 @@ public abstract class Shape {
     /**
      * Поворот фигуры вокруг с помощью матрицы поворота
      * @param degrees величина в градусах
->>>>>>> b67dc2cd44ad23232b79af10259c81a92da0a34c
      */
     public void rotate(int degrees) {
         double radians = GeometryMath.degreesToRadian(degrees);

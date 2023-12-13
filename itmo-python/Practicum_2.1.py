@@ -23,18 +23,3 @@ b = int(input())
 x1 = geometry(a, b, 'plosh')
 x2 = geometry(a, b, 'perim')
 print(x1, x2)
-
-# Можно использовать такой вариант, но он не соответствует тому уровню, какой дали к моменту этой лабы
-# def func(x, y, name):
-#     def plosh(x, y):
-#         return x * y
-#
-#     def perim(x, y):
-#         return (x + y) * 2
-#
-#     return locals()[name](x, y)
-#
-#
-# x = int(input())
-# y = int(input())
-# print(func(x, y, "plosh"), func(x, y, "perim"))
